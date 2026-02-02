@@ -35,7 +35,7 @@ function Chat({ token, user, onLogout }) {
 
   useEffect(() => {
     loadConversations();
-  }, [loadConversations]);
+  }, []);
 
   useEffect(() => {
     scrollToBottom();
@@ -64,7 +64,7 @@ function Chat({ token, user, onLogout }) {
     } catch (error) {
       console.error('Failed to load conversations:', error);
     }
-  }, [token]);
+  };
 
   const createNewConversation = async () => {
     try {
