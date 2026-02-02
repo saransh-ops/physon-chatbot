@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { marked } from 'marked';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/github-dark.css';
@@ -35,7 +35,7 @@ function Chat({ token, user, onLogout }) {
 
   useEffect(() => {
     loadConversations();
-  }, []);
+  }, [loadConversations]);
 
   useEffect(() => {
     scrollToBottom();
@@ -64,7 +64,7 @@ function Chat({ token, user, onLogout }) {
     } catch (error) {
       console.error('Failed to load conversations:', error);
     }
-  };
+  }, [token]};
 
   const createNewConversation = async () => {
     try {
